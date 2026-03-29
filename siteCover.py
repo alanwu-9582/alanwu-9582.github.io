@@ -9,7 +9,7 @@ import PIL.Image, PIL.ImageDraw, PIL.ImageFont
 # basic method
 def functionFilledArray(size:np.array, function):
     return np.array([[function(np.array([h, w])) for w in range(size[1])] for h in range(size[0])])
-def mixWithMask(img1:np.array, img2:np.array, img2_mask:np.array or int or float):
+def mixWithMask(img1:np.array, img2:np.array, img2_mask:np.array or int or float): # type: ignore
     return (
         img1 * (1 - img2_mask)
         + 
@@ -17,7 +17,10 @@ def mixWithMask(img1:np.array, img2:np.array, img2_mask:np.array or int or float
     )
 def getTextImage(text, size, fontPath):
     font = PIL.ImageFont.truetype(fontPath, size)
-    w, h = font.getsize(text)
+
+    draw = PIL.ImageDraw.Draw(PIL.Image.new('RGB', (1, 1)))
+    bbox = draw.textbbox((0, 0), text, font=font)
+    w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
     textImg = PIL.Image.new(mode='RGB', size=(w+2, h+2), color=(0, 0, 0))
     PIL.ImageDraw.Draw(textImg).text(
         (1, 1), 

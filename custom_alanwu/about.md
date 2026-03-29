@@ -1,338 +1,284 @@
 <!-- don'tParseAsArticle -->
 <style>
-	/* basic */
+	#aboutContent,
 	#aboutContent * {
-		margin: 0px;
-		outline: none;
 		box-sizing: border-box;
-		font-family: Arial, Helvetica, sans-serif;
-		user-select: none;
 	}
 
-	#aboutContent, #glassBox {
-		margin: 0px !important;
-		width: calc(100*var(--mw)) !important;
-    	height: calc(100*var(--mh)) !important;
-		position: relative;
-	}
-
-	/* settings class */
-	#aboutContent [display="bothCenter"] {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: center;
-	}
-	#aboutContent [material="glass"] {
-		background-color: #ffffff30;
-		backdrop-filter: blur(calc(0.4*var(--mw)));
-		border-color: #aaaaaa00;
-		border-width: 2px;
-		border-style: solid;
-		border-radius: 20px;
-	}
-
-	/* type class */
-	#aboutContent .page {
-		--margin: calc(4*var(--mw));
-		margin: var(--margin) var(--margin) calc(var(--margin)*2) var(--margin);
-		width: calc(100*var(--mw) - var(--margin)*2);
-		height: calc(100*var(--mh) - var(--margin)*2);
-		--pageInnerWidth: 100%;
-		--pageInnerHeight: 100%;
-	}
-
-	#aboutContent .containBox{
-		padding: calc(4*var(--mw));
+	#aboutContent {
 		width: 100%;
-		height: 100%;
-		box-sizing: border-box;
+		color: var(--text-color, #e7eaf0);
+		font-family: "Inter", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
 	}
-	#aboutContent .cardBox {
-		display: flex;
-		flex-direction: row;
-		align-content: center;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: calc(4*var(--mw));
-		width: var(--pageInnerWidth);
-		height: calc(var(--pageInnerHeight)*0.8);
-		margin-top: calc(5.5*var(--mh));
+
+	#aboutContent .about-shell {
+		width: 100%;
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0;
 	}
-	#aboutContent .cardBox > .card {
-		--bgi: url('');
-		--shadowColor: black;
+
+	#aboutContent .about-hero {
+		margin-bottom: 1.5rem;
+		padding: 2rem 2rem 1.25rem;
+		border: 1px solid rgba(255, 255, 255, 0.06);
+		border-radius: 20px;
+		background:
+			linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015)),
+			var(--box-backgroundColor, #27292f);
+	}
+
+	#aboutContent .about-eyebrow {
+		margin: 0 0 0.6rem 0;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--text-color-faint, #7f8793);
+	}
+
+	#aboutContent .about-title {
+		margin: 0 0 0.8rem 0;
+		font-size: clamp(2rem, 1.5rem + 1.4vw, 3rem);
+		font-weight: 800;
+		line-height: 1.15;
+		letter-spacing: -0.03em;
+		color: var(--text-color, #e7eaf0);
+	}
+
+	#aboutContent .about-description {
+		max-width: 42rem;
+		margin: 0;
+		font-size: 1rem;
+		line-height: 1.8;
+		color: var(--text-color-muted, #a6adb8);
+	}
+
+	#aboutContent .about-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	#aboutContent .about-card {
+		position: relative;
 		display: flex;
 		flex-direction: column;
-		flex-wrap: nowrap;
-		align-content: center;
-		justify-content: center;
-		align-items: center;
-		height: calc(var(--pageInnerHeight)*0.45);
-		width: calc(19.8*var(--mw));
-		position: relative;
-		background: white;
-		border-color: transparent;
-		border-color: #afafaf88;
-		border-width: 2px;
-		border-style: solid;
-		border-radius: 15px;
-		box-shadow: 0px 0px 0px calc(-1*var(--mw)) white;
-		transform: translateY(0px);
-		transition: 0.5s;
-		transition-timing-function: cubic-bezier(0.6, -0.57, 0.26, 2.12);
+		gap: 0.9rem;
+		min-height: 180px;
+		padding: 1.25rem 1.25rem 1.1rem;
+		border: 1px solid rgba(255, 255, 255, 0.07);
+		border-radius: 18px;
+		background: var(--box-backgroundColor, #27292f);
+		text-decoration: none;
+		color: inherit;
 		overflow: hidden;
-	}
-	/* #aboutContent .cardBox > .card:hover {
-		border-color: #afafaf88;
-		border-color: var(--shadowColor);
-		box-shadow: calc(2*var(--mw)) calc(2*var(--mw)) calc(1*var(--mw)) 0px #00000088;
-		transform: translateY(-10px);
-		box-shadow: 0px 20px 5px 0px var(--shadowColor);
-	} */
-
-	#aboutContent .cardBox > .card:hover {
-		animation: sh0 0.5s ease-in-out both;
-		border-color: var(--shadowColor);
-		transform: translateY(-10px);
+		transition:
+			transform 0.18s ease,
+			border-color 0.18s ease,
+			background-color 0.18s ease,
+			box-shadow 0.18s ease;
 	}
 
-	@keyframes sh0 {
-	0% {
-		transform: rotate(0deg);
+	#aboutContent .about-card:hover {
+		transform: translateY(-3px);
+		border-color: rgba(255, 255, 255, 0.14);
+		background: rgba(255, 255, 255, 0.04);
+		box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
 	}
 
-	25% {
-		transform: rotate(7deg);
-	}
-
-	50% {
-		transform: rotate(-7deg);
-	}
-
-	75% {
-		transform: rotate(1deg);
-	}
-
-	100% {
-		transform: rotate(0deg);
-	}
-	}
-
-	#aboutContent .cardBox > .card:hover span {
-		animation: storm 0.7s ease-in-out both;
-		animation-delay: 0.06s;
-	}
-
-	#aboutContent .cardBox > .card::before {
+	#aboutContent .about-card::before {
 		content: "";
 		position: absolute;
-		--width: calc(12*var(--mw));
-		width: var(--width);
-		height: var(--width);
-		bottom: calc(var(--width)*-0.25);
-		right: calc(var(--width)*-0.25);
-		z-index: -1;
-		background-image: var(--bgi);
-		background-position: 0px 0px;
-		background-repeat: no-repeat;
-		background-size: 100%;
-		transform: rotateZ(30deg) translateY(0px);
-		filter: grayscale(10);
-		opacity: 0.2;
-		transition: 1s;
-	}
-	#aboutContent .cardBox > .card:hover::before {
-		bottom: 50%;
-		right: calc((100% - var(--width) - 4px)/2);
-		transform: rotateZ(0deg) translateY(50%);
-		filter: grayscale(0);
-	}
-	#aboutContent .cardBox > .card > h3 {
-		margin: calc(1*var(--mh)) calc(2*var(--mw));
-		color: black;
-		text-align: center;
-		font-size: calc(1.8*var(--mw));
-		font-weight: bold;
-	}
-	#aboutContent .cardBox > .card > p {
-		margin: calc(0.5*var(--mh)) calc(2*var(--mw));
-		color: black;
-		text-align: center;
-		font-size: calc(1.2*var(--mw));
-		font-weight: bold;
+		inset: auto -30px -30px auto;
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		background: var(--card-accent, rgba(255,255,255,0.08));
+		filter: blur(10px);
+		opacity: 0.22;
+		pointer-events: none;
 	}
 
-	/* unique element */
-	#aboutContent #waterDropCvs {
-		position: fixed;
-		top: 0px;
-		left: 0px;
-		z-index: 1;
-	}
-
-	#aboutContent #pageBox {
-		--pageIndex: 0;
-		width: 100%;
-		height: 100%;
-		top: calc(-100*var(--mh) * var(--pageIndex));
-		left: 0px;
-		transition: 0.5s;
-		z-index: 2;
-	}
-
-	#aboutContent #title {
+	#aboutContent .about-card-top {
 		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-content: center;
-		justify-content: center;
 		align-items: center;
-		width: var(--pageInnerWidth);
-		height: calc(var(--pageInnerHeight)*0.1);
-		color: var(--text-color1);
-		text-shadow: calc(0.5*var(--mw)) calc(0.5*var(--mw)) calc(0.5*var(--mw)) #00000058;
-		font-size: calc(5*var(--mw));
-		font-family: 'Courier New', Courier, monospace;
-		text-align: center;
+		justify-content: space-between;
+		gap: 1rem;
 	}
-	
 
-	@media screen and (max-width: 100vh) {
-		#aboutContent, 
-		#aboutContent #glassBox, 
-		#aboutContent .containBox, 
-		#aboutContent .cardBox {
-			height: auto !important;
-		}
-
-		#aboutContent .cardBox {
-			display: flex;
-			flex-direction: column;
-			flex-wrap: nowrap;
-			align-content: center;
-			align-items: center;
-			margin: calc(1*var(--mw)) 0px;
-			height: calc(var(--pageInnerHeight)*0.8);
-		}
-		#aboutContent .cardBox > .card {
-			flex-direction: row-reverse;
-			justify-content: center;
-			align-items: center;
-			align-content: center;
-			flex-wrap: nowrap;
-			width: 100%;
-			height: calc(20*var(--mw));
-		}
-		#aboutContent .cardBox > .card::before {
-			--width: calc(15*var(--mh));
-		}
-		#aboutContent .cardBox > .card > h3 {
-			margin: 0px calc(4*var(--mw)) 0px calc(2*var(--mw));
-			width: 30%;
-			font-size: calc(6.2*var(--mw));
-		}
-		#aboutContent .cardBox > .card > p {
-			margin: 0px calc(2*var(--mw)) 0px calc(4*var(--mw));
-			width: 70%;
-			font-size: calc(4.2*var(--mw));
-		}
-
-		#aboutContent #title {
-			height: calc(var(--pageInnerHeight)*0.2);
-		}
-
+	#aboutContent .about-icon {
+		width: 52px;
+		height: 52px;
+		border-radius: 14px;
+		background:
+			linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+			rgba(255,255,255,0.02);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		background-image: var(--icon-url);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 26px;
+		flex: 0 0 auto;
 	}
-	@media screen and (min-width: 200vh) and (max-width: 300vh) {
-		#aboutContent #title {
-			width: calc(100% - 4*var(--mw)*2);
-			position: absolute;
-			top: 0px;
-			transform: translateY(-50%);
-		}
-		#aboutContent .cardBox{
-			--gapX: 2%;
-			--gapY: 10%;
-			gap: var(--gapY) var(--gapX);
-			width: calc((100% - 4*var(--mw)*3)*0.8);
-			height: calc((100% - 4*var(--mw)*2)*0.9);
-			position: absolute;
-			bottom: calc(4*var(--mw));
-			right: calc(4*var(--mw));
-			box-sizing: border-box;
-		}
-		#aboutContent .cardBox > .card {
-			width: calc((100% - var(--gapX)*3)/4);
-			height: calc((100% - var(--gapY)*1)/2);
-		}
-		#aboutContent .cardBox > .card > p {
-			font-size: calc(1*var(--mw));
-		}
+
+	#aboutContent .about-link-hint {
+		font-size: 0.82rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		color: var(--text-color-faint, #7f8793);
 	}
-	@media screen and (min-width: 300vh) {
-		#aboutContent #title {
-			width: calc(100% - 4*var(--mw)*2);
-			position: absolute;
-			top: 0px;
-			transform: translateY(-50%);
+
+	#aboutContent .about-card-body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+	}
+
+	#aboutContent .about-card-title {
+		margin: 0;
+		font-size: 1.35rem;
+		font-weight: 800;
+		line-height: 1.2;
+		color: var(--text-color, #e7eaf0);
+	}
+
+	#aboutContent .about-card-text {
+		margin: 0;
+		font-size: 0.96rem;
+		line-height: 1.7;
+		color: var(--text-color-muted, #a6adb8);
+	}
+
+	#aboutContent .about-card-footer {
+		margin-top: auto;
+		padding-top: 0.2rem;
+		font-size: 0.88rem;
+		font-weight: 700;
+		color: var(--card-strong, #ffffff);
+	}
+
+	#aboutContent .about-card.wide {
+		grid-column: 1 / -1;
+		min-height: 150px;
+	}
+
+	@media (max-width: 800px) {
+		#aboutContent .about-hero {
+			padding: 1.4rem 1.2rem 1rem;
+			border-radius: 16px;
 		}
-		#aboutContent .cardBox{
-			--gapX: 2%;
-			--gapY: 10%;
-			gap: var(--gapY) var(--gapX);
-			width: calc(100% - 4*var(--mw)*2);
-			height: calc((100% - 4*var(--mw)*2)*0.9);
-			position: absolute;
-			bottom: calc(4*var(--mw));
-			right: calc(4*var(--mw));
-			box-sizing: border-box;
+
+		#aboutContent .about-grid {
+			grid-template-columns: 1fr;
 		}
-		#aboutContent .cardBox > .card {
-			width: calc((100% - var(--gapX)*3)/4);
-			height: calc((100% - var(--gapY)*1)/2);
+
+		#aboutContent .about-card,
+		#aboutContent .about-card.wide {
+			grid-column: auto;
+			min-height: 0;
+			padding: 1rem;
+			border-radius: 16px;
 		}
-		#aboutContent .cardBox > .card > p {
-			display: none;
+
+		#aboutContent .about-card-title {
+			font-size: 1.15rem;
+		}
+
+		#aboutContent .about-card-text {
+			font-size: 0.92rem;
 		}
 	}
 </style>
 <div id="aboutContent">
-	<div id="glassBox" class="page" display="bothCenter" material="glass">
-		<div class="containBox">
-			<h1 id="title">About Alanwu</h1>
-			<div class="cardBox" display="bothCenter">
-				<a target="_blank" class="card hrefButton" style="--shadowColor: #ff7e7e; --bgi: url('<?=basicPath?>/image/aboutImage/logo-youtube.png');" href="https://www.youtube.com/channel/UCSc8KKDgxmsa5xwY7FjEI0w">
-					<h3>YouTube</h3>
-					<p contentkey="youtube-description">Alanwu的主頻道，<br>以音遊影片為主。</p>
-				</a>
-				<a target="_blank" class="card hrefButton" style="--shadowColor: #666666; --bgi: url('<?=basicPath?>/image/aboutImage/logo-github.png');" href="https://github.com/alanwu-9582">
-					<h3>Github</h3>
-					<p contentkey="github-description">各種奇怪專案<br>堆放處。</p>
-				</a>
-				<a target="_blank" class="card hrefButton" style="--shadowColor: #b29bff; --bgi: url('<?=basicPath?>/image/aboutImage/logo-twitch.png');" href="https://www.twitch.tv/xxooalanxdooxx">
-					<h3>Twitch</h3>
-					<p contentkey="twitch-description">會不會哪天突然開台呢？<br>按下追隨不就知道了。</p>
-				</a>
-				<a target="_blank" class="card hrefButton" style="--shadowColor: #666666; --bgi: url('<?=basicPath?>/image/aboutImage/logo-twitter.png');" href="https://twitter.com/XxAlanXDxX">
-					<h3>Twitter</h3>
-					<p contentkey="twitter-description">就是個推特帳號<br>不會發推的那種</p>
-				</a>
-				<a target="_blank" class="card hrefButton" style="--shadowColor: #d03b9b; --bgi: url('<?=basicPath?>/image/aboutImage/logo-instagram.png');" href="https://open.spotify.com/user/31gobogu4v64ofjo436gpr3nhpg4">
-					<h3>Instragram</h3>
-					<p contentkey="instagram-description">沒什麼東西 :P</p>
-				</a>
-				<a target="_blank" class="card hrefButton" style="--shadowColor: #ac5d1e; --bgi: url('<?=basicPath?>/image/aboutImage/logo-frc8725.png');" href="https://frc8725misty.blogspot.com/">
-					<h3>FRC-8725</h3>
-					<p contentkey="github-description">南山高中 FRC Team <br>8725 Misty Panther</p>
-				</a>
-				<a target="_blank" class="card hrefButton" style="--shadowColor: #fff27a; --bgi: url('<?=basicPath?>/image/aboutImage/logo-photos.png');" href="https://photos.google.com/?album=alanwu" onclick="event.preventDefault();window.open('https:\/\/youtu.be/dQw4w9WgXcQ?si=aiFtJ-IFWJuDlxDU', '_blank');">
-					<h3>Photos</h3>
-					<p contentkey="photo-description">放了一些照片<br></p>
-				</a>
-				<!-- 再加按鈕就會被mcskin擋到 -->
-			</div>
+	<section class="about-shell">
+		<div class="about-hero">
+			<p class="about-eyebrow">About</p>
+			<h1 class="about-title">alanwu-9582</h1>
+			<p class="about-description">
+				UWU
+			</p>
 		</div>
-	</div>
+		<div class="about-grid">
+			<a
+				target="_blank"
+				class="about-card youtube"
+				style="
+					--icon-url: url('<?=basicPath?>/image/aboutImage/logo-youtube.png');
+					--card-accent: rgba(255, 84, 84, 0.22);
+					--card-strong: #ff8f8f;
+				"
+				href="https://www.youtube.com/channel/UCSc8KKDgxmsa5xwY7FjEI0w"
+			>
+				<div class="about-card-top">
+					<div class="about-icon"></div>
+					<span class="about-link-hint">Open Link</span>
+				</div>
+				<div class="about-card-body">
+					<h3 class="about-card-title">YouTube</h3>
+					<p class="about-card-text">就一些影片</p>
+				</div>
+				<div class="about-card-footer">Watch videos</div>
+			</a>
+			<a
+				target="_blank"
+				class="about-card github"
+				style="
+					--icon-url: url('<?=basicPath?>/image/aboutImage/logo-github.png');
+					--card-accent: rgba(200, 200, 200, 0.16);
+					--card-strong: #e7eaf0;
+				"
+				href="https://github.com/alanwu-9582"
+			>
+				<div class="about-card-top">
+					<div class="about-icon"></div>
+					<span class="about-link-hint">Open Link</span>
+				</div>
+				<div class="about-card-body">
+					<h3 class="about-card-title">GitHub</h3>
+					<p class="about-card-text">各種奇怪專案，堆放處。</p>
+				</div>
+				<div class="about-card-footer">View repositories</div>
+			</a>
+			<a
+				target="_blank"
+				class="about-card instagram"
+				style="
+						--icon-url: url('<?=basicPath?>/image/aboutImage/logo-instagram.png');
+						--card-accent: rgba(255, 129, 84, 0.2);
+						--card-strong: #ffb08e;
+				"
+				href="https://www.instagram.com/wu.chin.lun"
+			>
+				<div class="about-card-top">
+					<div class="about-icon"></div>
+					<span class="about-link-hint">Open Link</span>
+				</div>
+				<div class="about-card-body">
+					<h3 class="about-card-title">Instagram</h3>
+					<p class="about-card-text">沒什麼東西 :P</p>
+				</div>
+				<div class="about-card-footer">Follow updates</div>
+			</a>
+			<a
+				target="_blank"
+				class="about-card twitch"
+				style="
+					--icon-url: url('<?=basicPath?>/image/aboutImage/logo-twitch.png');
+					--card-strong: #b29bff;
+				"
+				href="https://www.twitch.tv/avocatchi114"
+			>
+				<div class="about-card-top">
+					<div class="about-icon"></div>
+					<span class="about-link-hint">Open Link</span>
+				</div>
+				<div class="about-card-body">
+					<h3 class="about-card-title">Twitch</h3>
+					<p class="about-card-text">會不會哪天突然開台呢？按下追隨不就知道了。</p>
+				</div>
+				<div class="about-card-footer">Watch streams</div>
+			</a>
+		</div>
+	</section>
 </div>

@@ -34,22 +34,22 @@
 	<link rel="prefetch" href="data/article.json" />
 	<link rel="prefetch" href="data/portfolio.json" />
 	<link id="mainCss" rel="stylesheet" href="public/style/main.css" />
-	<link rel="stylesheet" href="public/style/clickEffect.css" />
 	<link rel="stylesheet" href="public/style/floatAlert.css" />
 	<link rel="stylesheet" href="public/style/articleContent.css" />
 	<link rel="stylesheet" href="<?=customDirPath?>/style/custom.css" />
 	<link rel="alternate" type="application/rss+xml" title="RSS Feed for <?=title?>" href=".rss" />
+
 	<script src="public/script/basic.js"></script>
-	<script src="public/script/clickAnimation.js"></script>
 	<script src="public/script/floatAlert.js"></script>
-	<script src="public/script/bgAnimation.js"></script>
 	<!-- <script src="public/script/net_npm_marked_marked.min.js"></script> -->
-	<script src="public/script/slides.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script>
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css"> -->
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/dark.min.css"> -->
+
+	<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 	<script src="public/script/gl-matrix-min.js" data-nothing="<?=skinPath?>"></script>
 	<script>
 		const TITLE = `<?=title?>`;
@@ -59,19 +59,24 @@
 		const CATEGORY_COLORS = {
 			'<?=category.name?>': {bright: `<?=category.color.bright?>`, dark: `<?=category.color.dark?>`}, 
 		};
+
+		const TAG_COLORS = {
+			'<?=tag.name?>': {bright: `<?=tag.color.bright?>`, dark: `<?=tag.color.dark?>`}, 
+		};
+		
 	</script>
+
 </head>
 <body>
-	<canvas id="bgAniCvs"></canvas>
 	<aside>
 		<div id="pageSwitcher">
 			<input type="radio" name="pageRadio" id="pageRadio-filter">
 			<label for="pageRadio-filter"><?=pages.filter.text?>
 				<div class="page">
 					<h2><?=pages.filter.search?></h2><div id="searchBox" class="buttons"><input id="searchInput" type="text"></div>
-					<h2><?=pages.filter.archives?></h2><div id="archiveButtons" class="buttons"><!-- <button>2023</button> --></div>
 					<h2><?=pages.filter.categories?></h2><div id="categoryButtons" class="buttons"><!-- <button>tutorial</button> --></div>
 					<h2><?=pages.filter.tags?></h2><div id="tagButtons" class="buttons"><!-- <button>c++</button> --></div>
+					<h2><?=pages.filter.archives?></h2><div id="archiveButtons" class="buttons"><!-- <button>2023</button> --></div>
 				</div>
 			</label>
 			<input type="radio" name="pageRadio" id="pageRadio-outline">
@@ -105,7 +110,7 @@
 	</main>
 	<footer>
 		<hr>
-		2023 © <?=title?><br />
+		2025 © <?=title?><br />
 		<p>
 		This template is made by <a href="https://maohupi.github.io">MaoHuPi</a><br />
 		Icon taken from Google Fonts
@@ -151,6 +156,5 @@
 	<div id="effects"></div>
 	<script src="public/script/loadData.js"></script>
 	<script src="public/script/main.js"></script>
-	<script src="public/script/character.js" data-nothing="<?=skinPath?>"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="zh-TW" theme="dark">
 <head>
 	<!-- Basic Meta Tag -->
-	<meta name="description" content="I love Izumi Sagiri." />
+	<meta name="description" content="NTUT ETUHP" />
 	<meta name="robots" content="max-snippet:50, max-image-preview:standard, notranslate, noimageindex" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta charset="UTF-8" />
@@ -12,7 +12,7 @@
 	<meta property="og:url" content="https://alanwu-9582.github.io/Alanwu9582-blog" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="Alanwu's Blog" />
-	<meta property="og:description" content="I love Izumi Sagiri." />
+	<meta property="og:description" content="NTUT ETUHP" />
 	<meta property="og:image" content="https://alanwu-9582.github.io/Alanwu9582-blog/data/siteCover.jpg" />
 	<meta property="og:locale" content="zh-TW" />
 	<!-- Google Meta Tag -->
@@ -23,7 +23,7 @@
 	<meta name="twitter:site" content="@XxAlanXDxX" />
 	<meta name="twitter:image" content="https://alanwu-9582.github.io/Alanwu9582-blog/data/siteCover.jpg" />
 	<meta name="twitter:title" content="Alanwu's Blog" />
-	<meta name="twitter:description" content="I love Izumi Sagiri." />
+	<meta name="twitter:description" content="NTUT ETUHP" />
 
 	<title>Alanwu's Blog</title>
 	<base target="_blank" rel="noreferrer noopener" />
@@ -33,22 +33,22 @@
 	<link rel="prefetch" href="data/article.json" />
 	<link rel="prefetch" href="data/portfolio.json" />
 	<link id="mainCss" rel="stylesheet" href="public/style/main.css" />
-	<link rel="stylesheet" href="public/style/clickEffect.css" />
 	<link rel="stylesheet" href="public/style/floatAlert.css" />
 	<link rel="stylesheet" href="public/style/articleContent.css" />
 	<link rel="stylesheet" href="custom_alanwu/style/custom.css" />
 	<link rel="alternate" type="application/rss+xml" title="RSS Feed for Alanwu's Blog" href=".rss" />
+
 	<script src="public/script/basic.js"></script>
-	<script src="public/script/clickAnimation.js"></script>
 	<script src="public/script/floatAlert.js"></script>
-	<script src="public/script/bgAnimation.js"></script>
 	<!-- <script src="public/script/net_npm_marked_marked.min.js"></script> -->
-	<script src="public/script/slides.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script>
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css"> -->
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/dark.min.css"> -->
+
+	<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 	<script>
 		const TITLE = `Alanwu's Blog`;
 		if(globalThis.TITLE === undefined) globalThis.TITLE = 'Blog';
@@ -56,19 +56,23 @@
 		const CATEGORY_COLORS = {
 			'Hacking': {bright: `75, 200, 168`, dark: `61, 162, 136`}, 
 		};
+
+		const TAG_COLORS = {
+		};
+		
 	</script>
+
 </head>
 <body>
-	<canvas id="bgAniCvs"></canvas>
 	<aside>
 		<div id="pageSwitcher">
 			<input type="radio" name="pageRadio" id="pageRadio-filter">
 			<label for="pageRadio-filter">Filter
 				<div class="page">
 					<h2>Search</h2><div id="searchBox" class="buttons"><input id="searchInput" type="text"></div>
-					<h2>Archives</h2><div id="archiveButtons" class="buttons"><!-- <button>2023</button> --></div>
 					<h2>Categories</h2><div id="categoryButtons" class="buttons"><!-- <button>tutorial</button> --></div>
 					<h2>Tags</h2><div id="tagButtons" class="buttons"><!-- <button>c++</button> --></div>
+					<h2>Archives</h2><div id="archiveButtons" class="buttons"><!-- <button>2023</button> --></div>
 				</div>
 			</label>
 			<input type="radio" name="pageRadio" id="pageRadio-outline">
@@ -102,7 +106,7 @@
 	</main>
 	<footer>
 		<hr>
-		2023 © Alanwu's Blog<br />
+		2025 © Alanwu's Blog<br />
 		<p>
 		This template is made by <a href="https://maohupi.github.io">MaoHuPi</a><br />
 		Icon taken from Google Fonts
@@ -112,14 +116,14 @@
 		<div id="avatarBox">
 			<img id="avatar" src="custom_alanwu/image/configImage/avatar.png" alt="site avatar" />
 			<div id="badges">
-				<div data-title="FRC8725前軟體組副組長">🦾</div>
+				<div data-title="FRC8725 Software Coach">🪛</div>
 				<div data-title="UWU">👨‍💻</div>
 				<div data-title=":P">👻</div>
 			</div>
 			<div id="badgeDescription"></div>
 		</div>
 		<h1 id="siteName">Alanwu's Blog</h1>
-		<p id="siteDescription">I love Izumi Sagiri.</p>
+		<p id="siteDescription">NTUT ETUHP</p>
 		<ul id="tabs" style="--tabsAmount: 4; --switchesAmount: 3;">
 			<li id="tab-home" style="--bgi: url('../image/templateIcon/tabIcon-home.svg');"><a data-href="?page=home">Home</a></li>
 			<li id="tab-about" style="--bgi: url('../image/templateIcon/tabIcon-about.svg');" data-aboutPath="custom_alanwu/about.md"><a data-href="?page=about" rel="author me">About</a></li>
