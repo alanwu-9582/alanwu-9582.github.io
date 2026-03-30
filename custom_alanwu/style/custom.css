@@ -17,12 +17,12 @@
 :root[theme="dark"] {
 	--mainColor: #00000000;
 	--body-backgroundColor: #1f2125;
-	--header-backgroundColor: #131416af;
+	--header-backgroundColor: #131416;
 	--badge-backgroundColor: #2b2f36;
 	--box-backgroundColor: #27292f;
 	--code-background: #17191d;
 	--searchMark-background: #7b5160;
-	--tabHovered-background: rgba(255, 255, 255, 0.05);
+	--tabHovered-background: #25252509;
 	--custom-linkColor: #4ba3eb;
 	--custom-strongColor: #f5f7ff55;
 
@@ -178,7 +178,7 @@ header>* {
 }
 
 #tabs li.now,
-#tabs li:hover {
+#tabs li:hover { 
 	background: transparent;
 	border-color: transparent;
 }
@@ -186,7 +186,7 @@ header>* {
 #tabs li.now>a,
 #tabs li:hover>a {
 	background-color: var(--tabHovered-background);
-	color: #ffffff;
+	/* color: #ffffff; */
 }
 
 #switches {
@@ -905,6 +905,13 @@ article>.content li {
 article>.content .mjx-chtml {
 	font-size: 0.9em;
 	margin: 0.6rem 0;
+}
+
+article>.content .custom-strong {
+	padding: 1.25rem;
+	background-color: #32353d;
+	border-radius: 0.85rem;
+	margin-bottom: 1.25rem;
 }
 
 article>.content blockquote {

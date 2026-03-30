@@ -9,7 +9,8 @@
     },
     "tags": {
         "programming": [],
-        "chemistry": []
+        "chemistry": [],
+        "computer": []
     },
     "articleDatas": [
         {
@@ -34,9 +35,22 @@
                 "chemistry"
             ],
             "publishedTime": "2026/1/18",
-            "name": "study\\114-1\\chemistry",
-            "path": "custom_alanwu\\article\\study\\114-1\\chemistry.md",
-            "readingTime": "0 minute",
+            "name": "study\\U114-1\\chemistry",
+            "path": "custom_alanwu\\article\\study\\U114-1\\chemistry.md",
+            "readingTime": "1 minute",
+            "archive": "2026"
+        },
+        {
+            "title": "人工智慧導論與計算機程式",
+            "description": "金童老師證照題庫部分題目詳解",
+            "category": "Study",
+            "tags": [
+                "computer"
+            ],
+            "publishedTime": "2026/3/30",
+            "name": "study\\U114-2\\computer",
+            "path": "custom_alanwu\\article\\study\\U114-2\\computer.md",
+            "readingTime": "5 minute",
             "archive": "2026"
         }
     ]

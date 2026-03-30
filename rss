@@ -12,7 +12,7 @@
 	<atom:link href="https://alanwu-9582.github.io/Alanwu9582-blog/rss" rel="self" type="application/rss+xml" />
 	<link>https://alanwu-9582.github.io/Alanwu9582-blog</link>
 	<description>NTUT ETUHP</description>
-	<lastBuildDate>Sun, 18 Jan 2026 00:00:00 +0800</lastBuildDate>
+	<lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0800</lastBuildDate>
 	<language>zh-TW</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -27,6 +27,7 @@
 	</image> 
 	
 	<item><title>Pwnagotchi</title><link>https://alanwu-9582.github.io/Alanwu9582-blog?page=article&amp;article=Pwnaogtchi</link><dc:creator><![CDATA[alanwu-9582]]></dc:creator><pubDate>Fri, 18 Oct 2024 00:00:00 +0800</pubDate><category><![CDATA[Hacking]]></category><guid isPermaLink="true">https://alanwu-9582.github.io/Alanwu9582-blog?page=article&amp;article=Pwnaogtchi</guid><description><![CDATA[Pwnagotchi 簡易配置教學 zh-tw]]></description></item>
-	<item><title>Chemistry Notes</title><link>https://alanwu-9582.github.io/Alanwu9582-blog?page=article&amp;article=study\114-1\chemistry</link><dc:creator><![CDATA[alanwu-9582]]></dc:creator><pubDate>Sun, 18 Jan 2026 00:00:00 +0800</pubDate><category><![CDATA[Study]]></category><guid isPermaLink="true">https://alanwu-9582.github.io/Alanwu9582-blog?page=article&amp;article=study\114-1\chemistry</guid><description><![CDATA[普通化學114-1筆記]]></description></item>
+	<item><title>Chemistry Notes</title><link>https://alanwu-9582.github.io/Alanwu9582-blog?page=article&amp;article=study\U114-1\chemistry</link><dc:creator><![CDATA[alanwu-9582]]></dc:creator><pubDate>Sun, 18 Jan 2026 00:00:00 +0800</pubDate><category><![CDATA[Study]]></category><guid isPermaLink="true">https://alanwu-9582.github.io/Alanwu9582-blog?page=article&amp;article=study\U114-1\chemistry</guid><description><![CDATA[普通化學114-1筆記]]></description></item>
+	<item><title>人工智慧導論與計算機程式</title><link>https://alanwu-9582.github.io/Alanwu9582-blog?page=article&amp;article=study\U114-2\computer</link><dc:creator><![CDATA[alanwu-9582]]></dc:creator><pubDate>Mon, 30 Mar 2026 00:00:00 +0800</pubDate><category><![CDATA[Study]]></category><guid isPermaLink="true">https://alanwu-9582.github.io/Alanwu9582-blog?page=article&amp;article=study\U114-2\computer</guid><description><![CDATA[金童老師證照題庫部分題目詳解]]></description></item>
 	</channel>
 </rss>

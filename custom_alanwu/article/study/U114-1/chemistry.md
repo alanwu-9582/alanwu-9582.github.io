@@ -1,5 +1,5 @@
 <!-- title: Chemistry Notes -->
-<!-- description: 普通化學114-1筆記 -->
+<!-- description: 普通化學114-1筆記-->
 <!-- category: Study -->
 <!-- tags: chemistry -->
 <!-- published time: 2026/1/18 -->

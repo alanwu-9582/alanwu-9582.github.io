@@ -209,31 +209,31 @@ var dataLoaded = () => { };
 		);
 	});
 
-	// const backgroundMusicSwitch = $('#backgroundMusicSwitch');
-	// const bgm = new Audio(backgroundMusicSwitch.getAttribute('data-path'));
-	// bgm.addEventListener('play', () => {
-	// 	if(backgroundMusicSwitch.getAttribute('value') !== 'on'){
-	// 		backgroundMusicSwitch.setAttribute('value', 'on');
-	// 	}
-	// });
-	// bgm.addEventListener('pause', () => {
-	// 	if(backgroundMusicSwitch.getAttribute('value') !== 'off'){
-	// 		backgroundMusicSwitch.setAttribute('value', 'off');
-	// 	}
-	// });
-	// bgm.loop = true;
-	// bgm.volume = parseFloat(backgroundMusicSwitch.getAttribute('data-volume'));
-	// function controlBackgroundMusic(command){
-	// 	if(command == 'on'){
-	// 		this.play();
-	// 	}
-	// 	else{
-	// 		this.pause();
-	// 	}
-	// }
-	// backgroundMusicSwitch.addEventListener('click', () => {
-	// 	switchSwitcher(backgroundMusicSwitch, controlBackgroundMusic.bind(bgm));
-	// });
+	const backgroundMusicSwitch = $('#backgroundMusicSwitch');
+	const bgm = new Audio(backgroundMusicSwitch.getAttribute('data-path'));
+	bgm.addEventListener('play', () => {
+		if(backgroundMusicSwitch.getAttribute('value') !== 'on'){
+			backgroundMusicSwitch.setAttribute('value', 'on');
+		}
+	});
+	bgm.addEventListener('pause', () => {
+		if(backgroundMusicSwitch.getAttribute('value') !== 'off'){
+			backgroundMusicSwitch.setAttribute('value', 'off');
+		}
+	});
+	bgm.loop = true;
+	bgm.volume = parseFloat(backgroundMusicSwitch.getAttribute('data-volume'));
+	function controlBackgroundMusic(command){
+		if(command == 'on'){
+			this.play();
+		}
+		else{
+			this.pause();
+		}
+	}
+	backgroundMusicSwitch.addEventListener('click', () => {
+		switchSwitcher(backgroundMusicSwitch, controlBackgroundMusic.bind(bgm));
+	});
 
 	function switchDarkMode() {
 		var theme = html.getAttribute('theme') == 'dark' ? 'bright' : 'dark';
