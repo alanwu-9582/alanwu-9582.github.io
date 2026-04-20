@@ -533,7 +533,7 @@ var dataLoaded = () => { };
 						articleContent = _marked_parse(articleContent);
 						content.innerHTML = articleContent;
 
-						function processElementLevel(oldElementLevelList, parent = false, parentIndexText = '') {
+						function processElementLevel(oldElementLevelList, parent = false, depth = 0, compoundInfo = { n: 0, L: '' }) {
 							if (oldElementLevelList.length == 0) {
 								return [];
 							}
@@ -552,19 +552,29 @@ var dataLoaded = () => { };
 								}
 							}
 							for (let i = 0; i < newElementLevelList.length; i++) {
-								let elementData = newElementLevelList[i]
+								let elementData = newElementLevelList[i];
+								const idx = i + 1;
+								let label, nextCompoundInfo = { ...compoundInfo };
+								switch (depth % 6) {
+									case 0: label = `${idx}.`;                                      nextCompoundInfo.n = idx; break;
+									case 1: label = `(${idx}).`;                                    break;
+									case 2: label = `${String.fromCharCode(64 + idx)}.`;            nextCompoundInfo.L = String.fromCharCode(64 + idx); break;
+									case 3: label = `(${String.fromCharCode(96 + idx)}).`;         break;
+									case 4: label = `${compoundInfo.n}-${idx}.`;                   nextCompoundInfo.n = idx; break;
+									case 5: label = `${compoundInfo.L}-${idx}.`;                   nextCompoundInfo.L = String.fromCharCode(64 + idx); break;
+								}
 								let listItem = $e('li');
 								listItem.for = elementData[1];
 								var nthId = $$(`[id^="h-${elementData[1].innerText}"]`).length + 1;
 								elementData[1].id = `h-${elementData[1].innerText}${nthId === 1 ? '' : nthId}`;
-								listItem.innerText = `${parentIndexText}${i + 1}. ${elementData[1].innerText}`;
+								listItem.innerText = `${label} ${elementData[1].innerText}`;
 								listItem.addEventListener('click', event => {
 									event.stopPropagation();
 									let elementRect = elementData[1].getBoundingClientRect();
 									window.scroll(0, elementRect.y + window.scrollY);
 									history.pushState({}, `${$_GET['article']} ${elementData[1].innerText}`, `?page=article&article=${$_GET['article']}&anchor=${elementData[1].id}`);
 								});
-								processElementLevel(elementData[2], listItem, `${parentIndexText}${i + 1}-`);
+								processElementLevel(elementData[2], listItem, depth + 1, nextCompoundInfo);
 								orderedList.appendChild(listItem);
 							}
 							if (parent) parent.appendChild(orderedList);
