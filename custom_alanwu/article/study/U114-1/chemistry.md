@@ -52,3 +52,4 @@ $$Q = \frac{[C]^l [D]^m}{[A]^j [B]^k}$$
 
 $$P = \frac{n}{V}RT = cRT$$
 其中 `c` 是濃度
+
