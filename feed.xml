@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>alanwu-9582</title>
+    <link>https://alanwu-9582.github.io/</link>
+    <description>alanwu-9582 的個人網站：課堂筆記、side project 與雜記。</description>
+    <language>zh-Hant</language>
+    <atom:link href="https://alanwu-9582.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>人工智慧導論與計算機程式</title>
+      <link>https://alanwu-9582.github.io/#/article?id=ai-intro-114-2</link>
+      <guid isPermaLink="false">ai-intro-114-2</guid>
+      <description>金童老師</description>
+      <category>Study</category>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Chemistry Notes</title>
+      <link>https://alanwu-9582.github.io/#/article?id=chemistry-114-1</link>
+      <guid isPermaLink="false">chemistry-114-1</guid>
+      <description>普通化學114-1筆記</description>
+      <category>Study</category>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Pwnagotchi</title>
+      <link>https://alanwu-9582.github.io/#/article?id=pwnagotchi</link>
+      <guid isPermaLink="false">pwnagotchi</guid>
+      <description>Pwnagotchi 簡易配置教學 zh-tw</description>
+      <category>Hacking</category>
+      <pubDate>Fri, 18 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

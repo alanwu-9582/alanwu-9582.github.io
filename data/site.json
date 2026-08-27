@@ -1,0 +1,103 @@
+{
+  "title": "alanwu-9582",
+  "tagline": "筆記、專案與一些奇怪的東西",
+  "description": "alanwu-9582 的個人網站：課堂筆記、side project 與雜記。",
+  "language": "zh-Hant",
+  "siteUrl": "https://alanwu-9582.github.io",
+  "repo": "https://github.com/alanwu-9582/alanwu-9582.github.io",
+  "profile": {
+    "name": "alanwu-9582",
+    "avatar": "assets/images/avatar.png",
+    "intro": "NTUT ETUHP　·　FRC 8725 Misty Panther 軟體教練",
+    "badges": [
+      {
+        "icon": "🪛",
+        "text": "FRC8725 Software Coach"
+      },
+      {
+        "icon": "👨‍💻",
+        "text": "UWU"
+      },
+      {
+        "icon": "👻",
+        "text": ":P"
+      }
+    ]
+  },
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/alanwu-9582",
+      "logo": "assets/images/links/logo-github.png",
+      "desc": "各種奇怪專案，堆放處。",
+      "hint": "View repositories",
+      "color": "#c6c6c6",
+      "primary": true
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UCSc8KKDgxmsa5xwY7FjEI0w",
+      "logo": "assets/images/links/logo-youtube.png",
+      "desc": "就一些影片。",
+      "hint": "Watch videos",
+      "color": "#ff8080",
+      "primary": true
+    },
+    {
+      "label": "Twitch",
+      "url": "https://www.twitch.tv/avocatchi114",
+      "logo": "assets/images/links/logo-twitch.png",
+      "desc": "會不會哪天突然開台呢？按下追隨不就知道了。",
+      "hint": "Watch streams",
+      "color": "#b9a1ff"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/wu.chin.lun",
+      "logo": "assets/images/links/logo-instagram.png",
+      "desc": "沒什麼東西 :P",
+      "hint": "Follow updates",
+      "color": "#ffbc5e"
+    },
+    {
+      "label": "FRC 8725",
+      "url": "https://github.com/FRC8725",
+      "logo": "assets/images/links/logo-frc8725.png",
+      "desc": "Misty Panther 隊上的程式與文件。",
+      "hint": "Team repositories",
+      "color": "#c6543c"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:alanwu0517@gmail.com",
+      "logo": "assets/images/links/logo-gmail.png",
+      "desc": "有事情找我的話，寄信最快。",
+      "hint": "alanwu0517@gmail.com",
+      "color": "#7dff95"
+    }
+  ],
+  "categories": {
+    "Hacking": {
+      "label": "Hacking",
+      "color": "#ff8080"
+    },
+    "Study": {
+      "label": "課堂筆記",
+      "color": "#87d1ff"
+    }
+  },
+  "tags": {
+    "programming": {
+      "label": "Programming",
+      "color": "#7dff95"
+    },
+    "chemistry": {
+      "label": "Chemistry",
+      "color": "#ffbc5e"
+    },
+    "computer": {
+      "label": "Computer",
+      "color": "#afafaf"
+    }
+  }
+}

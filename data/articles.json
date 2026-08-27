@@ -1,0 +1,44 @@
+{
+  "articles": [
+    {
+      "id": "ai-intro-114-2",
+      "title": "人工智慧導論與計算機程式",
+      "description": "金童老師",
+      "path": "content/articles/study/114/spring/ai-intro-114-2.md",
+      "category": "Study",
+      "tags": [
+        "computer"
+      ],
+      "publishedDate": "2026/04/20",
+      "updatedDate": "2026/04/20",
+      "readingMinutes": 12
+    },
+    {
+      "id": "chemistry-114-1",
+      "title": "Chemistry Notes",
+      "description": "普通化學114-1筆記",
+      "path": "content/articles/study/114/fall/chemistry-114-1.md",
+      "category": "Study",
+      "tags": [
+        "chemistry"
+      ],
+      "publishedDate": "2026/01/18",
+      "updatedDate": "2026/01/18",
+      "readingMinutes": 1
+    },
+    {
+      "id": "pwnagotchi",
+      "title": "Pwnagotchi",
+      "description": "Pwnagotchi 簡易配置教學 zh-tw",
+      "path": "content/articles/pwnagotchi.md",
+      "category": "Hacking",
+      "tags": [
+        "programming"
+      ],
+      "cover": "assets/images/covers/pwnagotchi_cover.gif",
+      "publishedDate": "2024/10/18",
+      "updatedDate": "2024/10/18",
+      "readingMinutes": 3
+    }
+  ]
+}

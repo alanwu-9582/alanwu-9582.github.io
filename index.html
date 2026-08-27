@@ -1,157 +1,82 @@
 <!DOCTYPE html>
-<html lang="zh-TW" theme="dark">
+<html lang="zh-Hant">
+
 <head>
-	<!-- Basic Meta Tag -->
-	<meta name="description" content="NTUT ETUHP" />
-	<meta name="robots" content="max-snippet:50, max-image-preview:standard, notranslate, noimageindex" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="theme-color" content="#3d3d3d" />
-	<!-- Open Graph Meta Tag -->
-	<meta property="og:url" content="https://alanwu-9582.github.io/Alanwu9582-blog" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Alanwu's Blog" />
-	<meta property="og:description" content="NTUT ETUHP" />
-	<meta property="og:image" content="https://alanwu-9582.github.io/Alanwu9582-blog/data/siteCover.jpg" />
-	<meta property="og:locale" content="zh-TW" />
-	<!-- Google Meta Tag -->
-	<meta name="googlebot-news" content="none" />
-	<!--  Twitter Meta Tag -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:creator" content="@XxAlanXDxX" />
-	<meta name="twitter:site" content="@XxAlanXDxX" />
-	<meta name="twitter:image" content="https://alanwu-9582.github.io/Alanwu9582-blog/data/siteCover.jpg" />
-	<meta name="twitter:title" content="Alanwu's Blog" />
-	<meta name="twitter:description" content="NTUT ETUHP" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>alanwu-9582</title>
+  <meta name="description" content="alanwu-9582 的個人網站：課堂筆記、side project 與雜記。">
+  <meta name="theme-color" content="#252525">
 
-	<title>Alanwu's Blog</title>
-	<base target="_blank" rel="noreferrer noopener" />
-	<link rel="shortcut icon" href="custom_alanwu/image/configImage/icon.ico" type="image/templateIcon/x-icon" />
-	<link rel="shortcut icon" href="custom_alanwu/image/configImage/avatar.png" type="image/templateIcon/x-icon" />
-	<link rel="prefetch" href="data/md5.json" />
-	<link rel="prefetch" href="data/article.json" />
-	<link rel="prefetch" href="data/portfolio.json" />
-	<link id="mainCss" rel="stylesheet" href="public/style/main.css" />
-	<link rel="stylesheet" href="public/style/floatAlert.css" />
-	<link rel="stylesheet" href="public/style/articleContent.css" />
-	<link rel="stylesheet" href="custom_alanwu/style/custom.css" />
-	<link rel="alternate" type="application/rss+xml" title="RSS Feed for Alanwu's Blog" href=".rss" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alanwu-9582.github.io/">
+  <meta property="og:title" content="alanwu-9582">
+  <meta property="og:description" content="alanwu-9582 的個人網站：課堂筆記、side project 與雜記。">
+  <meta property="og:image" content="https://alanwu-9582.github.io/assets/images/avatar.png">
+  <meta property="og:locale" content="zh_TW">
+  <meta name="twitter:card" content="summary">
 
-	<script src="public/script/basic.js"></script>
-	<script src="public/script/floatAlert.js"></script>
-	<!-- <script src="public/script/net_npm_marked_marked.min.js"></script> -->
-	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script>
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css"> -->
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/dark.min.css"> -->
+  <link rel="icon" href="assets/images/icon.ico">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="alanwu-9582" href="feed.xml">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="alanwu-9582">
 
-	<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-	<script>
-		const TITLE = `Alanwu's Blog`;
-		if(globalThis.TITLE === undefined) globalThis.TITLE = 'Blog';
-		const CUSTOM_DIR_PATH = `custom_alanwu`;
-		const CATEGORY_COLORS = {
-			'Hacking': {bright: `75, 200, 168`, dark: `61, 162, 136`}, 
-		};
+  <!-- Web fonts：JetBrains Mono（程式碼）+ IBM Plex Sans JP（--font-family 的備援） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
 
-		const TAG_COLORS = {
-		};
-		
-	</script>
-
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/articles.css">
+  <link rel="stylesheet" href="css/viewer.css">
+  <link rel="stylesheet" href="css/pages.css">
 </head>
+
 <body>
-	<aside>
-		<div id="pageSwitcher">
-			<input type="radio" name="pageRadio" id="pageRadio-filter">
-			<label for="pageRadio-filter">Filter
-				<div class="page">
-					<h2>Search</h2><div id="searchBox" class="buttons"><input id="searchInput" type="text"></div>
-					<h2>Categories</h2><div id="categoryButtons" class="buttons"><!-- <button>tutorial</button> --></div>
-					<h2>Tags</h2><div id="tagButtons" class="buttons"><!-- <button>c++</button> --></div>
-					<h2>Archives</h2><div id="archiveButtons" class="buttons"><!-- <button>2023</button> --></div>
-				</div>
-			</label>
-			<input type="radio" name="pageRadio" id="pageRadio-outline">
-			<label for="pageRadio-outline">Outline
-				<div class="page">
-					<!-- <ol>
-						<li>1. 問題</li>
-						<li>2. 解析</li>
-						<li>3. 解方
-							<ol>
-								<li>3-1. Map</li>
-								<li>3-2. WeakMap</li>
-							</ol>
-						</li>
-					</ol> -->
-				</div>
-			</label>
-		</div>
-		<div id="pages">
-			<div></div>
-		</div>
-		<button id="scrollToArticle"></button>
-	</aside>
-	<main>
-		<!-- <article class="closed">
-			<p class="category">tutorial</p>
-			<h1 class="title">JS用物件當鍵值</h1>
-			<p class="description">前些日子寫出的bug，直接把我搞到瘋掉</p>
-			<p class="info"><span class="publishedTime">Apr 16, 2023</span><span class="readingTime">2 minute read</span></p>
-		</article> -->
-	</main>
-	<footer>
-		<hr>
-		2025 © Alanwu's Blog<br />
-		<p>
-		This template is made by <a href="https://maohupi.github.io">MaoHuPi</a><br />
-		Icon taken from Google Fonts
-		</p>
-	</footer>
-	<header>
-		<div id="avatarBox">
-			<img id="avatar" src="custom_alanwu/image/configImage/avatar.png" alt="site avatar" />
-			<div id="badges">
-				<div data-title="FRC8725 Software Coach">🪛</div>
-				<div data-title="UWU">👨‍💻</div>
-				<div data-title=":P">👻</div>
-			</div>
-			<div id="badgeDescription"></div>
-		</div>
-		<h1 id="siteName">Alanwu's Blog</h1>
-		<p id="siteDescription">NTUT ETUHP</p>
-		<ul id="tabs" style="--tabsAmount: 4; --switchesAmount: 3;">
-			<li id="tab-home" style="--bgi: url('../image/templateIcon/tabIcon-home.svg');"><a data-href="?page=home">Home</a></li>
-			<li id="tab-about" style="--bgi: url('../image/templateIcon/tabIcon-about.svg');" data-aboutPath="custom_alanwu/about.md"><a data-href="?page=about" rel="author me">About</a></li>
-			<li id="tab-articles" style="--bgi: url('../image/templateIcon/tabIcon-articles.svg');"><a data-href="?page=articles">Articles</a></li>
-			<li id="tab-portfolio" style="--bgi: url('../image/templateIcon/tabIcon-portfolio.svg');"><a data-href="?page=portfolio">Portfolio</a></li>
-			<div id="switches">
-				<div>
-					<li id="rssUrlCopy"><a>Copy RSS</a></li>
-					<li id="backgroundMusicSwitch" data-path="custom_alanwu/audio/relax.wav" data-volume="0.5"><a>BG Music</a></li>
-					<li id="darkModeSwitch"><a>Dark Mode</a></li>
-				</div>
-			</div>
-		</ul>
-		<nav></nav>
-	</header>
-	<div id="slidesPlayer">
-		<div class="box"></div>
-		<div class="bar">
-			<div id="slidesThemeSelector"></div>
-			<div id="slidesControlButtons">
-				<button id="slidesButton-fullScreen" style="--bgi: url('../image/templateIcon/slides-fullScreen.svg');"></button>
-				<button id="slidesButton-close" style="--bgi: url('../image/templateIcon/slides-close.svg');"></button>
-			</div>
-		</div>
-	</div>
-	<div id="alerts"></div>
-	<div id="effects"></div>
-	<script src="public/script/loadData.js"></script>
-	<script src="public/script/main.js"></script>
+  <a class="skip-link" href="#page-outlet">跳到主要內容</a>
+  <div class="app">
+    <nav class="side-nav" id="side-nav" aria-label="主導覽">
+      <button type="button" id="sidebar-toggle" class="sidebar-toggle" aria-label="收合側邊欄" aria-expanded="true"
+        title="收合側邊欄">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <a class="brand" href="#/home">
+        <img class="brand-logo" src="assets/images/avatar.png" alt="alanwu-9582 的頭像">
+        <div class="brand-text">
+          <div class="brand-name"><strong>ALANWU0517</strong></div>
+          <div class="brand-sub">Notes · Projects</div>
+        </div>
+      </a>
+      <button type="button" id="nav-menu-toggle" class="nav-menu-toggle" aria-label="開啟選單"
+        aria-expanded="false" aria-controls="primary-nav" title="選單">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round">
+          <line class="bar bar-top" x1="4" y1="7" x2="20" y2="7"></line>
+          <line class="bar bar-mid" x1="4" y1="12" x2="20" y2="12"></line>
+          <line class="bar bar-bot" x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+      </button>
+      <div class="nav-group" id="primary-nav"></div>
+      <div class="nav-spacer"></div>
+      <div class="nav-foot" id="nav-foot"></div>
+    </nav>
+
+    <main class="main" id="page-outlet" tabindex="-1" aria-live="polite">
+      <div class="state-block" role="status">
+        <div class="spinner" aria-hidden="true"></div>載入中…
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/core/main.js"></script>
 </body>
+
 </html>
