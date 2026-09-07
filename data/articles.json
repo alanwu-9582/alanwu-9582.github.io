@@ -10,7 +10,7 @@
         "computer"
       ],
       "publishedDate": "2026/04/20",
-      "updatedDate": "2026/04/20",
+      "updatedDate": "2026/08/27",
       "readingMinutes": 12
     },
     {
@@ -23,7 +23,7 @@
         "chemistry"
       ],
       "publishedDate": "2026/01/18",
-      "updatedDate": "2026/01/18",
+      "updatedDate": "2026/08/27",
       "readingMinutes": 1
     },
     {
@@ -37,7 +37,7 @@
       ],
       "cover": "assets/images/covers/pwnagotchi_cover.gif",
       "publishedDate": "2024/10/18",
-      "updatedDate": "2024/10/18",
+      "updatedDate": "2026/08/27",
       "readingMinutes": 3
     }
   ]
