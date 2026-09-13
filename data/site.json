@@ -8,19 +8,19 @@
   "profile": {
     "name": "alanwu-9582",
     "avatar": "assets/images/avatar.png",
-    "intro": "NTUT ETUHP　·　FRC 8725 Misty Panther 軟體教練",
+    "intro": "",
     "badges": [
       {
         "icon": "🪛",
         "text": "FRC8725 Software Coach"
       },
       {
-        "icon": "👨‍💻",
-        "text": "UWU"
+        "icon": "🪨",
+        "text": "NTUT ETUHP"
       },
       {
-        "icon": "👻",
-        "text": ":P"
+        "icon": "📷",
+        "text": "Sony α6400"
       }
     ]
   },
@@ -69,9 +69,9 @@
     },
     {
       "label": "Email",
-      "url": "mailto:alanwu0517@gmail.com",
+      "url": "mailto:alanwu0517+githubiosite@gmail.com",
       "logo": "assets/images/links/logo-gmail.png",
-      "desc": "有事情找我的話，寄信最快。",
+      "desc": "",
       "hint": "alanwu0517@gmail.com",
       "color": "#7dff95"
     }
