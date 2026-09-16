@@ -29,6 +29,8 @@ npx --yes http-server . -p 8788 -c-1
 <!-- tags: programming -->
 <!-- published time: 2024/10/18 -->
 <!-- cover: pwnagotchi_cover.gif -->
+<!-- dim sources: true -->
+<!-- number outline: false -->
 ```
 
 | 欄位 | 必填 | 說明 |
@@ -39,6 +41,8 @@ npx --yes http-server . -p 8788 -c-1
 | `tags` | 建議 | 逗號分隔，可多個；定義在 `data/site.json` 的 `tags`。 |
 | `published time` | 是 | 發佈日期，格式 `年/月/日`。 |
 | `cover` | 否 | 封面圖。只寫檔名時會去 `assets/images/covers/` 找。 |
+| `dim sources` | 否 | 設為 `true` 時，淡化正文中含「書 p.」與「PDF p.」的方括號課本出處；預設為 `false`。 |
+| `number outline` | 否 | 設為 `false` 時不自動編號；標題若自帶 `§1-1`、`1.`、`(1).` 等開頭則沿用，沒有就不顯示編號。預設為 `true`。 |
 
 「最後更新」不用自己填，會從 git 紀錄自動抓。
 
@@ -58,7 +62,20 @@ assets/images/articles/pwnagotchi/wiring.png
 
 方括號裡填簡短說明，滑鼠移到圖片上會顯示，點圖片可以放大。
 
-### 4. 更新資料
+### 4. 設定表格寬度
+
+表格預設會自動調整欄寬並在文章寬度內換行。若某張表格要保留內容寬度、改用橫向捲動，請在該表格正前方加入：
+
+```md
+<!-- table: scroll -->
+| 欄位一 | 欄位二 |
+| --- | --- |
+| 內容 | 內容 |
+```
+
+也可以明確寫 `<!-- table: auto -->` 切回自動寬度。設定只套用到緊接著的下一張表格，因此同一篇文章的不同表格可以分別設定。
+
+### 5. 更新資料
 
 ```bash
 node tools/build-data.mjs

@@ -7,6 +7,7 @@ import { getArticleById, getConfig, getNeighbours, getSite } from "../services/d
 import { categoryTag, tagList } from "../ui/labels.js";
 import {
   loadMarkdownLibs, renderMarkdown, enhanceMarkdown, extractOutline, stripFrontmatterComments,
+  getMarkdownOptions, dimTextbookSources,
 } from "../utils/markdown.js";
 import { addCopyButtons } from "../ui/code-copy.js";
 import { enableLightbox } from "../ui/lightbox.js";
@@ -50,6 +51,7 @@ export async function mountPage({ params }) {
       loadText(doc.path),
     ]);
     const source = stripFrontmatterComments(md);
+    const markdownOptions = getMarkdownOptions(md);
 
     if (!libs) {
       content.innerHTML =
@@ -59,12 +61,15 @@ export async function mountPage({ params }) {
     } else {
       content.innerHTML = renderMarkdown(source);
       await enhanceMarkdown(content);
+      if (markdownOptions.dimSources) dimTextbookSources(content);
       addCopyButtons(content);
       teardown.push(enableLightbox(content));
       addHeadingAnchors(content, doc.id);
 
       const headings = extractOutline(content);
-      teardown.push(renderOutline(outlineHost, outlineAside, headings, content, doc.id));
+      teardown.push(renderOutline(
+        outlineHost, outlineAside, headings, content, doc.id, markdownOptions.numberOutline,
+      ));
     }
 
     teardown.push(await renderFoot(foot, doc, site));
@@ -296,7 +301,20 @@ function numberOutline(items) {
   });
 }
 
-function renderOutline(host, aside, headings, content, docId) {
+/**
+ * 關閉自動編號時，沿用標題本身開頭的編號。
+ * 支援 §1-2、1.2、1.、(1).、A. 等常見格式；其餘標題保持原樣。
+ */
+function splitHeadingNumber(text) {
+  const raw = String(text || "").trim();
+  const match = raw.match(
+    /^(§\s*\d+(?:[-.]\d+)*(?:[A-Za-z])?|\(\d+(?:\.\d+)*\)\.?|\d+(?:\.\d+)+|(?:\d+|[A-Za-z])[.)、])\s+(.+)$/,
+  );
+  if (!match || !match[2]) return { prefix: "", displayText: raw };
+  return { prefix: match[1], displayText: match[2].trim() };
+}
+
+function renderOutline(host, aside, headings, content, docId, showNumbers = true) {
   if (!host) return null;
   host.replaceChildren();
   const usable = headings.filter((h) => h.id && h.level >= 1);
@@ -306,14 +324,24 @@ function renderOutline(host, aside, headings, content, docId) {
   }
   if (aside) aside.hidden = false;
 
-  const numbered = numberOutline(usable);
+  const numbered = showNumbers
+    ? numberOutline(usable)
+    : numberOutline(usable).map((item) => ({ ...item, ...splitHeadingNumber(item.text) }));
   const links = new Map();
-  for (const h of numbered) {
+  const entries = [];
+  const openParents = [];
+
+  for (const [index, h] of numbered.entries()) {
+    while (openParents.length && numbered[openParents.at(-1)].tier >= h.tier) {
+      openParents.pop();
+    }
+    const parentIndex = openParents.at(-1) ?? null;
+    const hasChildren = numbered[index + 1]?.tier > h.tier;
     const link = el("a", {
-      class: "outline-link",
+      class: `outline-link${h.prefix ? "" : " is-unnumbered"}`,
       // 真正的路由網址：中鍵開新分頁與「複製連結」都能用。
       href: buildHash("article", { id: docId, h: h.id }),
-      title: `${h.prefix} ${h.text}`,
+      title: [h.prefix, h.displayText || h.text].filter(Boolean).join(" "),
       dataset: { target: h.id, level: String(h.level), tier: String(h.tier) },
       style: `--indent:${h.tier}`,
       onclick: (e) => {
@@ -326,11 +354,52 @@ function renderOutline(host, aside, headings, content, docId) {
         setActive(h.id);
       },
     },
-      el("span", { class: "outline-num" }, h.prefix),
-      el("span", { class: "outline-text" }, h.text),
+      h.prefix ? el("span", { class: "outline-num" }, h.prefix) : null,
+      el("span", { class: "outline-text" }, h.displayText || h.text),
     );
+    const toggle = hasChildren ? el("button", {
+      type: "button",
+      class: "outline-toggle",
+      title: `收合「${h.text}」的子章節`,
+      "aria-label": `收合「${h.text}」的子章節`,
+      "aria-expanded": "true",
+    }, "›") : null;
+    const row = el("div", {
+      class: `outline-item${hasChildren ? " has-children" : ""}`,
+      style: `--indent:${h.tier}`,
+    }, toggle, link);
+
+    const entry = { row, toggle, parentIndex, collapsed: false, heading: h };
+    entries.push(entry);
+    if (hasChildren) openParents.push(index);
     links.set(h.id, link);
-    host.appendChild(link);
+    host.appendChild(row);
+  }
+
+  const updateCollapsedItems = () => {
+    for (const entry of entries) {
+      let parentIndex = entry.parentIndex;
+      let hidden = false;
+      while (parentIndex != null) {
+        if (entries[parentIndex].collapsed) { hidden = true; break; }
+        parentIndex = entries[parentIndex].parentIndex;
+      }
+      entry.row.hidden = hidden;
+      if (entry.toggle) {
+        entry.toggle.classList.toggle("is-collapsed", entry.collapsed);
+        entry.toggle.setAttribute("aria-expanded", String(!entry.collapsed));
+        const action = entry.collapsed ? "展開" : "收合";
+        entry.toggle.title = `${action}「${entry.heading.text}」的子章節`;
+        entry.toggle.setAttribute("aria-label", entry.toggle.title);
+      }
+    }
+  };
+
+  for (const entry of entries) {
+    entry.toggle?.addEventListener("click", () => {
+      entry.collapsed = !entry.collapsed;
+      updateCollapsedItems();
+    });
   }
 
   function setActive(id) {

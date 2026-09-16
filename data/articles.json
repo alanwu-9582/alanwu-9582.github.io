@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "organic_chemistry-115-1",
+      "title": "Organic Chemistry Notes",
+      "description": "有機化學115-1筆記",
+      "path": "content/articles/study/115/fall/organic_chemistry-115-1.md",
+      "category": "Study",
+      "tags": [
+        "chemistry"
+      ],
+      "publishedDate": "2026/09/16",
+      "updatedDate": "2026/09/16",
+      "readingMinutes": 7
+    },
+    {
       "id": "pwnagotchi",
       "title": "Pwnagotchi",
       "description": "Pwnagotchi 簡易配置教學 zh-tw",

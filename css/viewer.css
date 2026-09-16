@@ -159,6 +159,8 @@
 .outline-title:hover { color: var(--interactive); }
 .outline-title:focus-visible { outline: var(--focus-ring); outline-offset: 3px; }
 .outline-nav { display: flex; flex-direction: column; gap: 1px; }
+.outline-item { position: relative; }
+.outline-item[hidden] { display: none; }
 .outline-link {
   /* 用格線讓自動編號自成一欄，標題換行時才不會縮到編號底下。 */
   display: grid;
@@ -167,10 +169,34 @@
   font-size: 12.5px;
   line-height: 1.45;
   color: var(--text-muted);
-  padding: 5px 10px 5px calc(12px + var(--indent, 0) * 13px);
+  padding: 5px 10px 5px calc(32px + var(--indent, 0) * 13px);
   border-left: 2px solid transparent;
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
+.outline-toggle {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: calc(8px + var(--indent, 0) * 13px);
+  width: 20px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-xs);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%) rotate(90deg);
+  transition: transform var(--duration-fast) var(--easing-standard),
+    color var(--duration-fast) var(--easing-standard),
+    background var(--duration-fast) var(--easing-standard);
+}
+.outline-toggle.is-collapsed { transform: translateY(-50%); }
+.outline-toggle:hover { color: var(--text); background: var(--card-bg-alt); }
+.outline-toggle:focus-visible { outline: var(--focus-ring); outline-offset: -2px; }
+.outline-link.is-unnumbered { grid-template-columns: minmax(0, 1fr); }
 .outline-num {
   font-variant-numeric: tabular-nums;
   font-weight: 700;
@@ -438,15 +464,27 @@
 }
 
 /* ---------- 表格 ---------- */
-/* 外框負責圓角與橫向捲動；表格本身用 separate border，內部格線才不會疊成兩條。 */
+/* 外框負責圓角；表格本身用 separate border，內部格線才不會疊成兩條。 */
 .doc-content .table-wrap {
   margin: 0 0 18px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  overflow-x: auto;
   background: var(--cffy-theme-surface-a10);
 }
+.doc-content .table-wrap--auto table { table-layout: auto; }
+.doc-content .table-wrap--auto th,
+.doc-content .table-wrap--auto td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.doc-content .table-wrap--scroll { overflow-x: auto; }
+.doc-content .table-wrap--scroll table {
+  width: max-content;
+  min-width: 100%;
+}
+.doc-content .table-wrap--scroll th,
+.doc-content .table-wrap--scroll td { white-space: nowrap; }
 .doc-content table {
   width: 100%;
   border-collapse: separate;
@@ -470,6 +508,13 @@
   white-space: nowrap;
 }
 .doc-content tbody tr:nth-child(even) { background: rgba(var(--rgb-info), 0.04); }
+
+/* 由文章檔頭選擇性啟用的課本頁碼出處樣式。 */
+.doc-content .doc-source-ref {
+  color: var(--text-muted);
+  opacity: 0.72;
+  font-size: 0.92em;
+}
 
 /* ---------- 行內程式碼 ---------- */
 .doc-content code {

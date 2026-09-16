@@ -121,6 +121,20 @@ function rewriteImageSrc(src) {
 function buildRenderer() {
   const renderer = new window.marked.Renderer();
   const usedIds = new Set();
+  let nextTableLayout = "auto";
+
+  // 寫在表格正前方的註解可單獨指定該表格的排版方式；指令本身不輸出。
+  const defaultHtmlRenderer = renderer.html.bind(renderer);
+  renderer.html = (html) => {
+    const directive = String(html).match(
+      /^\s*<!--\s*table:\s*(auto|scroll)\s*-->\s*$/i,
+    );
+    if (directive) {
+      nextTableLayout = directive[1].toLowerCase();
+      return "";
+    }
+    return defaultHtmlRenderer(html);
+  };
 
   renderer.heading = (text, level, raw) => {
     const id = slugify(raw) || `sec-${level}`;
@@ -168,7 +182,9 @@ function buildRenderer() {
   // 表格外包一層，圓角與 overflow 交給外層處理 —— border-collapse 的表格切不出自己的圓角。
   renderer.table = (header, body) => {
     const tbody = body ? `<tbody>${body}</tbody>` : "";
-    return `<div class="table-wrap"><table><thead>${header}</thead>${tbody}</table></div>\n`;
+    const layout = nextTableLayout;
+    nextTableLayout = "auto";
+    return `<div class="table-wrap table-wrap--${layout}"><table><thead>${header}</thead>${tbody}</table></div>\n`;
   };
 
   // 外部連結開新分頁；站內 hash 連結維持原本行為。
@@ -234,6 +250,39 @@ export async function enhanceMarkdown(container) {
   }
 }
 
+/** 將課本頁碼出處包成可淡化的標記；略過連結與程式碼，避免改變其內容。 */
+export function dimTextbookSources(container) {
+  if (!container) return;
+  const pattern = /\[[^\]\r\n]*／書\s+p\.[^\]\r\n]*／PDF\s+p\.[^\]\r\n]*\]/g;
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (pattern.test(node.nodeValue || "")
+        && !node.parentElement?.closest("a, code, pre, script, style, .doc-source-ref")) {
+      textNodes.push(node);
+    }
+    pattern.lastIndex = 0;
+  }
+
+  for (const node of textNodes) {
+    const text = node.nodeValue || "";
+    const fragment = document.createDocumentFragment();
+    let cursor = 0;
+    for (const match of text.matchAll(pattern)) {
+      fragment.append(text.slice(cursor, match.index));
+      const span = document.createElement("span");
+      span.className = "doc-source-ref";
+      span.textContent = match[0];
+      fragment.append(span);
+      cursor = match.index + match[0].length;
+    }
+    fragment.append(text.slice(cursor));
+    node.replaceWith(fragment);
+  }
+}
+
 /** 從已渲染的 DOM 取出標題大綱。 */
 export function extractOutline(container) {
   const nodes = container.querySelectorAll("h1, h2, h3, h4, h5, h6");
@@ -254,4 +303,20 @@ export function stripFrontmatterComments(md) {
     else break;
   }
   return lines.slice(i).join("\n");
+}
+
+/** 讀取文章開頭以 HTML 註解表示的選項。 */
+export function getMarkdownOptions(md) {
+  const options = {};
+  for (const line of String(md).split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+    const match = trimmed.match(/^<!--\s*([^:]+?)\s*:\s*([\s\S]*?)\s*-->$/);
+    if (!match) break;
+    options[match[1].trim().toLowerCase()] = match[2].trim();
+  }
+  return {
+    dimSources: /^(true|1|yes|on)$/i.test(options["dim sources"] || ""),
+    numberOutline: !/^(false|0|no|off)$/i.test(options["number outline"] || ""),
+  };
 }
