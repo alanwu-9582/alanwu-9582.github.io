@@ -61,7 +61,7 @@ export async function mountPage({ params }) {
     } else {
       content.innerHTML = renderMarkdown(source);
       await enhanceMarkdown(content);
-      if (markdownOptions.dimSources) dimTextbookSources(content);
+      if (markdownOptions.dimSources) await dimTextbookSources(content);
       addCopyButtons(content);
       teardown.push(enableLightbox(content));
       addHeadingAnchors(content, doc.id);
@@ -69,6 +69,7 @@ export async function mountPage({ params }) {
       const headings = extractOutline(content);
       teardown.push(renderOutline(
         outlineHost, outlineAside, headings, content, doc.id, markdownOptions.numberOutline,
+        markdownOptions.collapseOutlineFromLevel,
       ));
     }
 
@@ -314,7 +315,9 @@ function splitHeadingNumber(text) {
   return { prefix: match[1], displayText: match[2].trim() };
 }
 
-function renderOutline(host, aside, headings, content, docId, showNumbers = true) {
+function renderOutline(
+  host, aside, headings, content, docId, showNumbers = true, collapseFromLevel = null,
+) {
   if (!host) return null;
   host.replaceChildren();
   const usable = headings.filter((h) => h.id && h.level >= 1);
@@ -369,7 +372,8 @@ function renderOutline(host, aside, headings, content, docId, showNumbers = true
       style: `--indent:${h.tier}`,
     }, toggle, link);
 
-    const entry = { row, toggle, parentIndex, collapsed: false, heading: h };
+    const collapsed = hasChildren && collapseFromLevel != null && h.level >= collapseFromLevel;
+    const entry = { row, toggle, parentIndex, collapsed, heading: h };
     entries.push(entry);
     if (hasChildren) openParents.push(index);
     links.set(h.id, link);
@@ -401,6 +405,7 @@ function renderOutline(host, aside, headings, content, docId, showNumbers = true
       updateCollapsedItems();
     });
   }
+  updateCollapsedItems();
 
   function setActive(id) {
     let activeLink = null;

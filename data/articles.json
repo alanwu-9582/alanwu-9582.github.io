@@ -1,31 +1,31 @@
 {
   "articles": [
     {
-      "id": "organic_chemistry-115-1",
-      "title": "Organic Chemistry Notes",
+      "id": "thermodynamics-of-materials_115-1",
+      "title": "Thermodynamics of Materials",
+      "description": "材料熱力學115-1筆記",
+      "path": "content/articles/study/115/fall/thermodynamics-of-materials_115-1.md",
+      "category": "Study",
+      "tags": [
+        "Thermodynamics",
+        "Materials"
+      ],
+      "publishedDate": "2026/09/17",
+      "updatedDate": "2026/09/17",
+      "readingMinutes": 19
+    },
+    {
+      "id": "organic-chemistry_115-1",
+      "title": "Organic Chemistry",
       "description": "有機化學115-1筆記",
-      "path": "content/articles/study/115/fall/organic_chemistry-115-1.md",
+      "path": "content/articles/study/115/fall/organic-chemistry_115-1.md",
       "category": "Study",
       "tags": [
         "chemistry"
       ],
       "publishedDate": "2026/09/16",
       "updatedDate": "2026/09/16",
-      "readingMinutes": 7
-    },
-    {
-      "id": "pwnagotchi",
-      "title": "Pwnagotchi",
-      "description": "Pwnagotchi 簡易配置教學 zh-tw",
-      "path": "content/articles/pwnagotchi.md",
-      "category": "Hacking",
-      "tags": [
-        "programming"
-      ],
-      "cover": "assets/images/covers/pwnagotchi_cover.gif",
-      "publishedDate": "2024/10/18",
-      "updatedDate": "2026/08/27",
-      "readingMinutes": 3
+      "readingMinutes": 30
     }
   ]
 }

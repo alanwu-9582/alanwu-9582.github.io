@@ -1,0 +1,9 @@
+{
+  "patterns": [
+    {
+      "name": "textbook-page-reference",
+      "source": "(?:[ \\t]*\\*)?\\[[^\\]\\r\\n]*[／/]\\s*書\\s+p\\.[^\\]\\r\\n]*[／/]\\s*PDF\\s+p\\.[^\\]\\r\\n]*\\]",
+      "flags": "g"
+    }
+  ]
+}

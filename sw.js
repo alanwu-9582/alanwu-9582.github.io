@@ -11,7 +11,7 @@
 //
 // 改動下面的 SHELL 清單時，記得把 CACHE_VERSION 往上加一版，舊快取才會被丟掉。
 
-const CACHE_VERSION = "alanwu-v1";
+const CACHE_VERSION = "alanwu-v2";
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const ASSET_CACHE = `${CACHE_VERSION}-assets`;
 const CDN_CACHE = `${CACHE_VERSION}-cdn`;
@@ -57,6 +57,7 @@ const SHELL = [
   "data/articles.json",
   "data/portfolio.json",
   "data/search-index.json",
+  "internal-data/dim-source-patterns.json",
   "content/about.md",
   "assets/images/icon.ico",
   "assets/images/avatar.png",

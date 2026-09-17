@@ -31,6 +31,7 @@ npx --yes http-server . -p 8788 -c-1
 <!-- cover: pwnagotchi_cover.gif -->
 <!-- dim sources: true -->
 <!-- number outline: false -->
+<!-- max collapse heading: ## -->
 ```
 
 | 欄位 | 必填 | 說明 |
@@ -43,6 +44,7 @@ npx --yes http-server . -p 8788 -c-1
 | `cover` | 否 | 封面圖。只寫檔名時會去 `assets/images/covers/` 找。 |
 | `dim sources` | 否 | 設為 `true` 時，淡化正文中含「書 p.」與「PDF p.」的方括號課本出處；預設為 `false`。 |
 | `number outline` | 否 | 設為 `false` 時不自動編號；標題若自帶 `§1-1`、`1.`、`(1).` 等開頭則沿用，沒有就不顯示編號。預設為 `true`。 |
+| `max collapse heading` | 否 | 設為 `##` 時，outline 中 H2 與更深層、且具有子標題的項目預設收合；可填 `#`～`######` 或等價的 `1`～`6`。未設定時全部展開。 |
 
 「最後更新」不用自己填，會從 git 紀錄自動抓。
 
@@ -117,6 +119,8 @@ data/               設定與自動產生的資料
   portfolio.json      作品集（手動維護）
   articles.json       自動產生，勿手動編輯
   search-index.json   自動產生，勿手動編輯
+internal-data/      程式使用的內部規則資料（不與網站內容設定混放）
+  dim-source-patterns.json  `dim sources` 的淡化目標正則表達式
 tools/build-data.mjs  產生上面兩個 JSON 與 feed.xml
 js/                 前端程式（core 路由 / pages 各頁 / ui 元件 / utils 工具）
 css/                樣式（theme 變數 / layout / components / articles / viewer / pages）

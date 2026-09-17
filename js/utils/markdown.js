@@ -5,7 +5,7 @@
 // 支援圖片、圖片連結、原生 HTML、程式碼區塊（語法上色）、表格、清單、
 // LaTeX（$…$、$$…$$）、Mermaid，以及標題大綱。
 
-import { escapeHtml, slugify } from "./utils.js";
+import { escapeHtml, loadJSON, slugify } from "./utils.js";
 
 /** 舊版文章裡用過的圖片前綴 → 現在的資料夾。 */
 const IMAGE_PREFIX_MAP = [
@@ -14,6 +14,7 @@ const IMAGE_PREFIX_MAP = [
 ];
 /** 其他相對路徑的圖片基準資料夾。 */
 const DEFAULT_IMAGE_BASE = "assets/images/articles";
+const DIM_SOURCE_PATTERNS_URL = "internal-data/dim-source-patterns.json";
 
 const CDN = {
   marked: "https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js",
@@ -25,6 +26,7 @@ const CDN = {
 };
 
 let libsPromise = null;
+let dimSourcePatternsPromise = null;
 
 function loadScript(src) {
   return new Promise((resolve, reject) => {
@@ -250,10 +252,38 @@ export async function enhanceMarkdown(container) {
   }
 }
 
-/** 將課本頁碼出處包成可淡化的標記；略過連結與程式碼，避免改變其內容。 */
-export function dimTextbookSources(container) {
+/** 從內部規則資料庫載入並編譯淡化目標；同一頁只讀取一次。 */
+async function loadDimSourcePatterns() {
+  if (!dimSourcePatternsPromise) {
+    dimSourcePatternsPromise = loadJSON(DIM_SOURCE_PATTERNS_URL).then((data) => {
+      if (!Array.isArray(data.patterns)) throw new Error("淡化規則缺少 patterns 陣列");
+      return data.patterns.map(({ name, source, flags = "g" }) => {
+        if (!source) throw new Error(`淡化規則 ${name || "(未命名)"} 缺少 source`);
+        return new RegExp(source, flags.includes("g") ? flags : `${flags}g`);
+      });
+    }).catch((err) => {
+      dimSourcePatternsPromise = null;
+      throw err;
+    });
+  }
+  return dimSourcePatternsPromise;
+}
+
+/** 將符合資料庫規則的出處包成可淡化標記；略過連結與程式碼。 */
+export async function dimTextbookSources(container) {
   if (!container) return;
-  const pattern = /\[[^\]\r\n]*／書\s+p\.[^\]\r\n]*／PDF\s+p\.[^\]\r\n]*\]/g;
+  let patterns;
+  try {
+    patterns = await loadDimSourcePatterns();
+  } catch (err) {
+    console.warn("淡化目標規則載入失敗：", err);
+    return;
+  }
+
+  for (const pattern of patterns) dimMatchingText(container, pattern);
+}
+
+function dimMatchingText(container, pattern) {
   const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
   const textNodes = [];
 
@@ -315,8 +345,15 @@ export function getMarkdownOptions(md) {
     if (!match) break;
     options[match[1].trim().toLowerCase()] = match[2].trim();
   }
+  const collapseHeading = options["max collapse heading"] || "";
+  const collapseMatch = collapseHeading.match(/^(#{1,6}|[1-6])$/);
+  const collapseOutlineFromLevel = collapseMatch
+    ? (collapseMatch[1].startsWith("#") ? collapseMatch[1].length : Number(collapseMatch[1]))
+    : null;
+
   return {
     dimSources: /^(true|1|yes|on)$/i.test(options["dim sources"] || ""),
     numberOutline: !/^(false|0|no|off)$/i.test(options["number outline"] || ""),
+    collapseOutlineFromLevel,
   };
 }

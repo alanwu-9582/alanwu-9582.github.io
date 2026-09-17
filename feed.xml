@@ -7,20 +7,20 @@
     <language>zh-Hant</language>
     <atom:link href="https://alanwu-9582.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Organic Chemistry Notes</title>
-      <link>https://alanwu-9582.github.io/#/article?id=organic_chemistry-115-1</link>
-      <guid isPermaLink="false">organic_chemistry-115-1</guid>
+      <title>Thermodynamics of Materials</title>
+      <link>https://alanwu-9582.github.io/#/article?id=thermodynamics-of-materials_115-1</link>
+      <guid isPermaLink="false">thermodynamics-of-materials_115-1</guid>
+      <description>材料熱力學115-1筆記</description>
+      <category>Study</category>
+      <pubDate>Thu, 17 Sep 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Organic Chemistry</title>
+      <link>https://alanwu-9582.github.io/#/article?id=organic-chemistry_115-1</link>
+      <guid isPermaLink="false">organic-chemistry_115-1</guid>
       <description>有機化學115-1筆記</description>
       <category>Study</category>
       <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>Pwnagotchi</title>
-      <link>https://alanwu-9582.github.io/#/article?id=pwnagotchi</link>
-      <guid isPermaLink="false">pwnagotchi</guid>
-      <description>Pwnagotchi 簡易配置教學 zh-tw</description>
-      <category>Hacking</category>
-      <pubDate>Fri, 18 Oct 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

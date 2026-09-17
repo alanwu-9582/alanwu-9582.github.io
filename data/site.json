@@ -93,7 +93,15 @@
     },
     "chemistry": {
       "label": "Chemistry",
-      "color": "#ffbc5e"
+      "color": "#b9a1ff"
+    },
+    "Thermodynamics": {
+      "label": "Thermodynamics",
+      "color": "#ff8080"
+    },
+    "Materials": {
+      "label": "Materials",
+      "color": "#87d1ff"
     },
     "computer": {
       "label": "Computer",
